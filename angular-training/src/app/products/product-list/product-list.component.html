@@ -1,0 +1,22 @@
+<xng-breadcrumb></xng-breadcrumb>
+<h5 class="text" style="margin-bottom: 20px;">Products</h5>
+<hr>
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th scope="col">Name</th>
+		<th scope="col">Description</th>
+		<th scope="col">Image</th>
+		<th scope="col">Price Range (RM)</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr *ngFor="let p of products; index as i" (click)="productDetails(p.id)">
+		<td>{{ p.name }}</td>
+		<td style="width: 60%"><div class="text">{{ p.desc }}</div></td>
+		<td><img [src]="p.imgPath" style="width: 250px"></td>
+		<td>{{ getPriceRange(p) }}</td>
+	</tr>
+	</tbody>
+</table>
+<hr>

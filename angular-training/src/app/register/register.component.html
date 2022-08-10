@@ -1,0 +1,82 @@
+<div class="container" style="margin-top: 10px;">
+	<div class="row justify-content-start">
+		<div class="col">
+			<xng-breadcrumb></xng-breadcrumb>
+		</div>
+	</div>
+</div>
+<div class="container" style="margin-top: 100px;">
+	<h5 class="text-center" style="margin-bottom: 20px;">Create New Account</h5>
+	<div class="col-md-12">
+		<form
+			*ngIf="!isSuccessful"
+			name="form"
+			(ngSubmit)="f.form.valid && onSubmit()"
+			#f="ngForm"
+			novalidate
+		  >
+			<div class="form-group">
+			  <label for="username">Username</label>
+			  <input
+				type="text"
+				class="form-control"
+				name="username"
+				[(ngModel)]="form.username"
+				required
+				minlength="3"
+				maxlength="20"
+				#username="ngModel"
+			  />
+			  <p *ngIf="username.invalid" style="color: red; font-style: italic;">
+				Username is required.
+				</p>
+			</div>
+			<div class="form-group">
+			  <label for="email">Email</label>
+			  <input
+				type="email"
+				class="form-control"
+				name="email"
+				[(ngModel)]="form.email"
+				required
+				email
+				#email="ngModel"
+			  />
+			  <p *ngIf="email.invalid" style="color: red; font-style: italic;">
+				Email is required.
+				</p>
+			</div>
+			<div class="form-group">
+			  <label for="password">Password</label>
+			  <input
+				type="password"
+				class="form-control"
+				name="password"
+				[(ngModel)]="form.password"
+				required
+				minlength="6"
+				#password="ngModel"
+			  />
+			  <p *ngIf="password.invalid" style="color: red; font-style: italic;">
+				Password is required.
+				</p>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-4">
+					<div class="form-group">
+						<button class="btn btn-primary btn-block" [disabled]="!f.form.valid">Sign Up</button>
+					  </div>
+				</div>
+			</div>
+			<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+			  Signup failed!<br />{{ errorMessage }}
+			</div>
+		  </form>
+		  <div *ngIf="isSuccessful">
+			<div class="alert alert-success">
+				Your registration is successful!
+			</div>
+			<button class="btn btn-primary" (click)="goToLogin()">Continue to Sign In</button>
+		  </div>
+	</div>
+</div>
