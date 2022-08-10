@@ -1,0 +1,2 @@
+
+exports.allAccess = (req, res) => {};

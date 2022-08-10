@@ -1,0 +1,42 @@
+<xng-breadcrumb></xng-breadcrumb>
+<div *ngIf="product; else elseBlock">
+	<h3 class="text-center" style="margin-bottom: 20px;">{{product.name}}</h3>
+	<div class="row">
+		<div class="col-4"></div>
+		<div class="col-4">
+			<img [src]="product.imgPath" alt="{{product.name}}" style="max-height: 400px">
+		</div>
+		<div class="col-4"></div>
+	</div>
+	
+	
+	<hr>
+	<div class="row">
+		<div class="col-2">
+			<strong>Description</strong>
+		</div>
+		<div class="col">
+			<p>{{product.desc}}</p>
+		</div>
+	</div>
+	<hr>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col"><strong>Variance</strong></th>
+				<th scope="col"><strong>Price (RM)</strong></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let v of product.variance; index as i">
+			  <td style="width: 16%">{{v.info}}</td>
+			  <td>{{v.price | number}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+</div>
+
+<ng-template #elseBlock>
+	<h1>Invalid Product ID</h1>
+</ng-template>

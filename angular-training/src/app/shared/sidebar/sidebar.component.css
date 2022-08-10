@@ -1,0 +1,21 @@
+.col-2 {
+  padding: 0;
+  width: 280px;
+  background-color: white;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.col-2  a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.col-2  a.active {
+  background-color: #343a40;
+  color: white;
+}
+
